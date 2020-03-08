@@ -36,14 +36,14 @@ while True:
 
     new_head = [snake[0][0], snake[0][1]]
 
-    if key == curses.KEY_UP:
-        new_head[0] -= 1
     if key == curses.KEY_DOWN:
         new_head[0] += 1
-    if key == curses.KEY_LEFT:
+    if key == curses.KEY_UP:
         new_head[0] -= 1
+    if key == curses.KEY_LEFT:
+        new_head[1] -= 1
     if key == curses.KEY_RIGHT:
-        new_head[0] += 1
+        new_head[1] += 1
 
     snake.insert(0, new_head)
 
@@ -53,7 +53,7 @@ while True:
             nf = [
                 random.randint(1, sh-1),
                 random.randint(1, sw-1)
-                ]
+            ]
             apple = nf if nf not in snake else None
         w.addch(apple[0], apple[1], curses.ACS_PI)
     else:
